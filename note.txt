@@ -1,0 +1,3 @@
+DarkMode 
+- npm install next-themes
+- npm install react-icons
