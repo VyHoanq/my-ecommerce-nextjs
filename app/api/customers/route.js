@@ -7,10 +7,12 @@ export async function GET(request) {
         // Fetch users with the role "USER" and include their profile information
         const customers = await db.user.findMany({
             where: {
-                role: "USER"
+                role: {
+                    in: ["USER", "FARMER"]
+                }
             },
             include: {
-                profile: true // Include the associated profile data
+                profile: true
             },
             orderBy: {
                 createdAt: "desc"

@@ -1,4 +1,4 @@
-import NewProductForm from "@/components/data-display/NewProductForm";
+import NewProductForm from "@/components/data-display/Forms/NewProductForm";
 import FormHeader from "@/components/forms/FormHeader";
 import { getData } from "@/lib/getData";
 import React from "react";

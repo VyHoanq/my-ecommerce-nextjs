@@ -2,7 +2,7 @@ import db from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
-  const { id } = await params;
+  const { id } = params;
   try {
     const user = await db.user.findUnique({
       where: { id },
@@ -11,22 +11,19 @@ export async function GET(request, { params }) {
         name: true,
         id: true,
         role: true,
-        createAt: true,
+        createdAt: true, 
         profile: true,
       },
     });
     return NextResponse.json(user);
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
-      {
-        message: "Failed to fetch user",
-        error,
-      },
+      { message: "Failed to fetch user", error },
       { status: 500 }
     );
   }
 }
+
 export async function DELETE(request, { params: { id } }) {
   try {
     const existingUser = await db.user.findUnique({

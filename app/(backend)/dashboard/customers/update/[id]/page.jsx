@@ -1,6 +1,6 @@
 import FormHeader from "@/components/forms/FormHeader";
 import { getData } from "@/lib/getData";
-import CustomerForm from "@/components/data-display/NewCustomerForm";
+import NewCustomerForm from "@/components/data-display/NewCustomerForm";
 
 export default async function UpdateCustomer({ params: { id } }) {
   // Add error handling and logging
@@ -15,7 +15,7 @@ export default async function UpdateCustomer({ params: { id } }) {
     return (
       <div>
         <FormHeader title="Update Customer" />
-        <CustomerForm user={user} />
+        <NewCustomerForm user={user} />
       </div>
     );
   } catch (error) {

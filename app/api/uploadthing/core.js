@@ -9,49 +9,55 @@ export const ourFileRouter = {
     // Set permissions and file types for this FileRoute
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("file url", file.url, metadata);
-      return{uploadeBy: "JB" };
+      return { uploadeBy: "JB" };
     }),
-    bannerImageUploader: f({ image: { maxFileSize: "2MB" } })
+  bannerImageUploader: f({ image: { maxFileSize: "2MB" } })
     // Set permissions and file types for this FileRoute
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("file url", file.url, metadata);
-      return {uploadeBy: "JB" };
+      return { uploadeBy: "JB" };
     }),
-    marketLogoUploader: f({ image: { maxFileSize: "1MB" } })
+  marketLogoUploader: f({ image: { maxFileSize: "1MB" } })
     // Set permissions and file types for this FileRoute
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("file url", file.url, metadata);
-      return {uploadeBy: "JB" };
+      return { uploadeBy: "JB" };
     }),
-    productImageUploader: f({ image: { maxFileSize: "1MB" } })
+  productImageUploader: f({ image: { maxFileSize: "1MB" } })
     // Set permissions and file types for this FileRoute
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("file url", file.url, metadata);
-      return {uploadeBy: "JB" };
+      return { uploadeBy: "JB" };
     }),
-   trainingImageUploader: f({ image: { maxFileSize: "2MB" } })
+  trainingImageUploader: f({ image: { maxFileSize: "2MB" } })
     // Set permissions and file types for this FileRoute
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("file url", file.url, metadata);
-      return {uploadeBy: "JB" };
+      return { uploadeBy: "JB" };
     }),
-    farmerProfileUploader: f({ image: { maxFileSize: "1MB" } })
+  farmerProfileUploader: f({ image: { maxFileSize: "1MB" } })
     // Set permissions and file types for this FileRoute
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("file url", file.url, metadata);
-      return {uploadeBy: "JB" };
+      return { uploadeBy: "JB" };
     }),
-    customerProfileUploader: f({ image: { maxFileSize: "1MB" } })
+  customerProfileUploader: f({ image: { maxFileSize: "1MB" } })
     // Set permissions and file types for this FileRoute
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("file url", file.url, metadata);
-      return {uploadeBy: "JB" };
+      return { uploadeBy: "JB" };
     }),
-    multipleProductsUploader: f({ image: { maxFileSize: "8MB",maxFileCount:4 } })
+  profileImageUploader: f({ image: { maxFileSize: "1MB" } })
     // Set permissions and file types for this FileRoute
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("file url", file.url, metadata);
-      return {uploadeBy: "JB" };
+      return { uploadeBy: "JB" };
     }),
-    
+  multipleProductsUploader: f({ image: { maxFileSize: "8MB", maxFileCount: 4 } })
+    // Set permissions and file types for this FileRoute
+    .onUploadComplete(async ({ metadata, file }) => {
+      console.log("file url", file.url, metadata);
+      return { uploadeBy: "JB" };
+    }),
+
 };

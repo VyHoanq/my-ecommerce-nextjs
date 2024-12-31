@@ -3,7 +3,6 @@
 import ImageInput from "@/components/forms/FormInput/Imageinput";
 import TextInput from "@/components/forms/FormInput/Textinput";
 import SubmitButton from "@/components/forms/SubmitButton";
-import FormHeader from "@/components/forms/FormHeader";
 import { makePostRequest, makePutRequest } from "@/lib/apiRequest";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";

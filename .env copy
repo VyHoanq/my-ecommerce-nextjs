@@ -1,0 +1,10 @@
+UPLOADTHING_SECRET='sk_live_a1c2408c6d8a2723b7099293e8f66881a54246bc94758620f950c7cbf6473c84'
+UPLOADTHING_APP_ID='mnq5puh5fq'
+NEXT_PUBLIC_BASE_URL='http://localhost:3000'
+RESEND_API_KEY="re_3CbGZ1ZY_FiBvB2kRiE7yxCNKgb774sZb"
+# DATABASE_URL="mongodb+srv://2210hung:6DBIRPrtBY6S89Yl
+# @cluster0.0ufl5.mongodb.net/zunzEcommerce?retryWrites=true&w=majority&appName=Cluster0"
+
+DATABASE_URL="mongodb+srv://2210hung:6DBIRPrtBY6S89Yl@cluster0.0ufl5.mongodb.net/zunzEcommerceDB?retryWrites=true&w=majority&appName=Cluster0"
+NEXTAUTH_SECRET="randomsecretkey"
+NEXTAUTH_URL="http://localhost:3000"

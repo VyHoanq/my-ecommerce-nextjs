@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import logo from "@/public/logo1.png";
 import {
+  BaggageClaim,
   Bolt,
   BuildingIcon,
   ChevronDownCircle,
@@ -16,6 +17,7 @@ import {
   Slack,
   Truck,
   UserCircle2Icon,
+  UserRoundPen,
   Users,
   Warehouse,
 } from "lucide-react";
@@ -115,13 +117,18 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
   if (role === "FARMER") {
     sidebarLinks = [
       {
+        title: "Profile",
+        icon: UserRoundPen,
+        href: "/dashboard/profile",
+      },
+      {
         title: "Sales",
         icon: Truck,
         href: "/dashboard/sales",
       },
       {
         title: "Orders",
-        icon: Truck,
+        icon: BaggageClaim,
         href: "/dashboard/orders",
       },
       {

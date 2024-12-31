@@ -1,15 +1,52 @@
-import { getServerSession } from 'next-auth'
-import React from 'react'
-import { authOptions } from '@/lib/authOptions'
+"use client";
+import PageHeader from "@/components/backend/layout/PageHeader";
+import ListFarmerForm from "@/components/data-display/Forms/ListFarmerForm";
+import ListProfileForm from "@/components/data-display/Forms/ListProfileForm";
+import { useSession } from "next-auth/react";
+import React from "react";
 
-export default async function page() {
-    const session = await getServerSession(authOptions)
+export default function ProfilePage() {
+    const { data: session } = useSession();
+    const userId = session?.user?.id;
+    const userRole = session?.user?.role;
 
-    if (!session) return
-    const { user } = session
+    const getProfileContent = () => {
+        if (userRole === 'FARMER') {
+            return {
+                title: "Farmer Profile",
+                href: `/dashboard/profile/update`,
+                linkTitle: "Update Farmer Profile",
+                component: <ListFarmerForm userId={userId} userRole="FARMER" />
+            };
+        }
+
+        if (userRole === 'USER') {
+            return {
+                title: "User Profile",
+                href: `/dashboard/profile/update/${userId}`,
+                linkTitle: "Update User Profile",
+                component: <ListProfileForm userId={userId} userRole="USER" />
+            };
+        }
+
+        return {
+            title: "Profile",
+            href: "/dashboard/profile/update",
+            linkTitle: "Update Profile",
+            component: <ListProfileForm userId={userId} userRole={userRole} />
+        };
+    };
+
+    const profileContent = getProfileContent();
+
     return (
-        <div className='text-black'>
-            <h2>Welcome {user?.name}</h2>
+        <div>
+            <PageHeader
+                title={profileContent.title}
+                href={profileContent.href}
+                linkTitle={profileContent.linkTitle}
+            />
+            {profileContent.component}
         </div>
-    )
+    );
 }

@@ -1,4 +1,4 @@
-import NewFarmerForm from '@/components/data-display/NewFarmerForm';
+import NewFarmerForm from '@/components/data-display/Forms/NewFarmerForm';
 import { getData } from '@/lib/getData';
 import React from 'react';
 

@@ -1,4 +1,4 @@
-import NewTrainingForm from "@/components/data-display/NewTrainingForm";
+import NewTrainingForm from "@/components/data-display/Forms/NewTrainingForm";
 import FormHeader from "@/components/forms/FormHeader";
 import { getData } from "@/lib/getData";
 import React from "react";

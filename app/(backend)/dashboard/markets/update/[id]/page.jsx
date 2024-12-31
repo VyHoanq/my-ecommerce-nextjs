@@ -1,4 +1,4 @@
-import NewMarketForm from "@/components/data-display/NewMarketForm";
+import NewMarketForm from "@/components/data-display/Forms/NewMarketForm";
 import FormHeader from "@/components/forms/FormHeader";
 import { getData } from "@/lib/getData";
 import React from "react";

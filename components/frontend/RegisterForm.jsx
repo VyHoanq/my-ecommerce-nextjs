@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 import SubmitButton from "../forms/SubmitButton";
 import TextInput from "../forms/FormInput/Textinput";
 
-
 export default function RegisterForm({ role = "USER" }) {
   const router = useRouter();
   const {
@@ -18,9 +17,9 @@ export default function RegisterForm({ role = "USER" }) {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const [emailErr, setEmailErr] = useState("");
+
   async function onSubmit(data) {
     try {
-      console.log(data);
       setLoading(true);
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
       const response = await fetch(`${baseUrl}/api/users`, {
@@ -31,14 +30,18 @@ export default function RegisterForm({ role = "USER" }) {
         body: JSON.stringify(data),
       });
       const responseData = await response.json();
+
       if (response.ok) {
-        console.log(responseData);
         setLoading(false);
-        toast.success("User Created Successfully");
         reset();
+
         if (role === "USER") {
+          toast.success("Account created successfully! You can now login.");
           router.push("/login");
         } else {
+          toast.success(`Account created! Please check ${data.email} to verify your account`, {
+            duration: 5000
+          });
           router.push("/verify-email");
         }
       } else {
@@ -47,15 +50,14 @@ export default function RegisterForm({ role = "USER" }) {
           setEmailErr("User with this Email already exists");
           toast.error("User with this Email already exists");
         } else {
-          // Handle other errors
           console.error("Server Error:", responseData.error);
-          toast.error("Oops Something Went wrong");
+          toast.error("Registration failed. Please try again.");
         }
       }
     } catch (error) {
       setLoading(false);
       console.error("Network Error:", error);
-      toast.error("Something Went wrong, Please Try Again");
+      toast.error("Connection error. Please try again.");
     }
   }
 
@@ -98,7 +100,7 @@ export default function RegisterForm({ role = "USER" }) {
       <SubmitButton
         isLoading={loading}
         buttonTitle="Register"
-        loadingButtonTitle="Creating Please wait...."
+        loadingButtonTitle="Creating account..."
       />
 
       <div className="flex gap-2 justify-between">
@@ -113,7 +115,7 @@ export default function RegisterForm({ role = "USER" }) {
         </p>
         {role === "USER" ? (
           <p className="text-[0.75rem] font-light text-gray-500 dark:text-gray-400 py-4">
-            Are you a Sellers{" "}
+            Are you a Seller?{" "}
             <Link
               href="/register-farmer"
               className="font-medium text-purple-600 hover:underline dark:text-purple-500"
@@ -121,15 +123,17 @@ export default function RegisterForm({ role = "USER" }) {
               Register here
             </Link>
           </p>
-        ) : <p className="text-[0.75rem] font-light text-gray-500 dark:text-gray-400 py-4">
-          Are you a User{" "}
-          <Link
-            href="/register"
-            className="font-medium text-purple-600 hover:underline dark:text-purple-500"
-          >
-            Register here
-          </Link>
-        </p>}
+        ) : (
+          <p className="text-[0.75rem] font-light text-gray-500 dark:text-gray-400 py-4">
+            Are you a User?{" "}
+            <Link
+              href="/register"
+              className="font-medium text-purple-600 hover:underline dark:text-purple-500"
+            >
+              Register here
+            </Link>
+          </p>
+        )}
       </div>
     </form>
   );

@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { makePutRequest } from "@/lib/apiRequest";
 import { useRouter } from "next/navigation";
-import TextInput from "../forms/FormInput/Textinput";
-import SubmitButton from "../forms/SubmitButton";
-import ImageInput from "../forms/FormInput/Imageinput";
+import TextInput from "@/components/forms/FormInput/Textinput";
+import ImageInput from "@/components/forms/FormInput/Imageinput";
+import SubmitButton from "@/components/forms/SubmitButton";
 
 export default function NewCustomerForm({ user }) {
   const [profileImageUrl, setProfileImageUrl] = useState(
