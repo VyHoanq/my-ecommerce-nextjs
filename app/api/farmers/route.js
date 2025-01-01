@@ -30,18 +30,13 @@ export async function POST(request) {
       data: {
         code: farmerData.code,
         contactPerson: farmerData.contactPerson,
-        contactPersonPhone: farmerData.contactPersonPhone,
         profileImageUrl: farmerData.profileImageUrl,
         lastName: farmerData.lastName,
         firstName: farmerData.firstName,
-        notes: farmerData.notes,
         phone: farmerData.phone,
         physicalAddress: farmerData.physicalAddress,
         terms: farmerData.terms,
-        isActive: farmerData.isActive || false,
         products: farmerData.products,
-        landSize: parseFloat(farmerData.landSize),
-        mainCrop: farmerData.mainCrop,
         userId: farmerData.userId.farmerId || farmerData.userId,
       },
     });

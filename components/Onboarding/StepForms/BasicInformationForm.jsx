@@ -1,7 +1,7 @@
 "use client";
 import TextInput from "@/components/forms/FormInput/Textinput";
 
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import NavButtons from "../NavButtons";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,8 +10,10 @@ import {
   setCurrentStep,
   updateOnboardingFormData,
 } from "@/redux/slices/onboardingSlice";
+import ArrayItemInput from "@/components/forms/FormInput/ArrayItemInput";
 
 export default function BasicInformationForm() {
+  const [products, setProducts] = useState([])
   const currentStep = useSelector((store) => store.onboarding.currentStep);
   const existingFormData = useSelector(
     (store) => store.onboarding.onboardingFormData
@@ -28,6 +30,7 @@ export default function BasicInformationForm() {
 
   const dispatch = useDispatch();
   async function processData(data) {
+    data.products = products;
     dispatch(updateOnboardingFormData(data));
     dispatch(setCurrentStep(currentStep + 1));
   }
@@ -45,13 +48,6 @@ export default function BasicInformationForm() {
           className="w-full"
         />
         <TextInput
-          label="Phone Number"
-          name="phone"
-          register={register}
-          errors={errors}
-          className="w-full"
-        />
-        <TextInput
           label="Last Name"
           name="lastName"
           register={register}
@@ -59,27 +55,30 @@ export default function BasicInformationForm() {
           className="w-full"
         />
         <TextInput
-          label="Farmer's Physical Address"
+          label="Phone Number"
+          name="phone"
+          register={register}
+          errors={errors}
+          className="w-full"
+        />
+        <TextInput
+          label="Seller's Address"
           name="physicalAddress"
           register={register}
           errors={errors}
           className="w-full"
         />
         <TextInput
-          label="Farmer's Contact Person"
+          label="Seller's Contact Person"
           name="contactPerson"
           register={register}
           errors={errors}
           className="w-full"
         />
-        <TextInput
-          label="Farmer's Contact Person Phone"
-          name="contactPersonPhone"
-          type="tel"
-          register={register}
-          errors={errors}
-          className="w-full"
-        />
+        <ArrayItemInput
+          setItems={setProducts}
+          items={products}
+          itemTitle="Product" />
       </div>
       <NavButtons />
     </form>

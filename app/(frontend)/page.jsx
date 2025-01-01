@@ -1,4 +1,5 @@
 import CategoryList from "@/components/frontend/CategoryList";
+import Chatbot from "@/components/frontend/Chatbot";
 import CommunityTrainings from "@/components/frontend/CommunityTrainings";
 import Hero from "@/components/frontend/Hero";
 import MartketList from "@/components/frontend/MartketList";
@@ -27,7 +28,7 @@ export default async function Home() {
         )
       })}
       <CommunityTrainings title="Featured Trainings" trainings={trainings.slice(0, 3)} />
-
+      <Chatbot />
     </div>
   );
 }

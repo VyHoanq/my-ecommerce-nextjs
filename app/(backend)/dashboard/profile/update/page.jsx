@@ -23,7 +23,7 @@ export default async function ProfilePage() {
 
         return (
             <div className='container mx-auto px-4'>
-                <FormHeader title="Update Farmer Profile" />
+                <FormHeader title="Update Seller Profile" />
                 <NewFarmerForm updateData={farmerData} userId={user.id} />
             </div>
         )

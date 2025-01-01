@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 body {
   font-family: "Inter", sans-serif;
@@ -124,7 +123,6 @@ body {
   object-fit: cover;
 }
 
-
 .swiper {
   width: 100%;
   height: 300px;
@@ -163,4 +161,184 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.chatbot-icon-modal {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+}
+
+/* .chatbot-icon-modal:hover{
+
+} */
+.animation {
+  animation-name: chatbot-icon-modal;
+}
+
+@keyframes chatbot-icon-modal {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100px);
+  }
+}
+
+.box-message-ai {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 19999;
+  max-width: 380px;
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 1s ease,
+    transform 0.3s ease;
+  pointer-events: none;
+}
+
+.box-message-ai.show {
+  opacity: 1;
+  /* Hiển thị */
+  transform: translateY(0);
+  /* Về vị trí cũ */
+  pointer-events: auto;
+  /* Cho phép tương tác */
+}
+
+.box-message-ai .box-message-ai__top {
+  width: 100%;
+  height: 80px;
+  border-radius: 7px 7px 0 0;
+  background-color: #de1c32;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px 0 20px;
+  color: white;
+}
+
+.box-message-ai .box-message-ai__center {
+  width: 100%;
+  max-height: 280px;
+  height: 100%;
+  background-color: #ffffff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+  padding: 0 7px;
+  display: flex;
+  flex-direction: column;
+}
+
+.box-message-ai .box-message-ai__center .message__role-chat {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 3px;
+  /* flex-direction: column; */
+}
+
+.box-message-ai .box-message-ai__center .message__role-chat__avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.box-message-ai .box-message-ai__center .message__role-chat__input {
+  width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 3px;
+  background-color: #fff;
+  font-size: 13px;
+  border-radius: 10px;
+  padding: 7px 7px;
+  border: 1px solid #dedcdc;
+}
+
+.box-message-ai .box-message-ai__bottom {
+  width: 100%;
+  height: 18%;
+  border-radius: 0 0 7px 7px;
+  background-color: #fff;
+
+  border-top: 1px solid rgb(198, 196, 196);
+  /* justify-content: space-between; */
+  padding: 0 10px 0 0;
+}
+
+.box-message-ai .box-message-ai__bottom form input {
+  /* fontSize: 14, flex: '1 1 auto', width: '100%', border: '1px solid #f2f2f2', borderRadius: 7; */
+  font-size: 13px;
+  flex: 1 1 auto;
+  width: 100%;
+  border: 1px solid #f2f2f2;
+  margin-left: 16px;
+  border-radius: 10px;
+}
+
+.box-message-ai .box-message-ai__bottom form input:focus {
+  background-color: #f2f2f2;
+  /* translate: ; */
+}
+
+.form-user-info {
+  display: flex;
+  /* overflow-x: hidden; */
+  margin-top: 20px;
+}
+
+.form-user-info form {
+  flex: 60%;
+}
+
+.form-user-info .payment-order-box {
+  flex: 40%;
+}
+
+.payment-order__header {
+  color: #de1c32;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.payment-order__content {
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 300px;
+  height: 100%;
+}
+
+.payment-order__content .item__method {
+  flex: 33%;
+  width: 100%;
+}
+
+.payment-order__footer {
+  color: #de1c32;
 }

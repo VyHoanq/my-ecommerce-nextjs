@@ -13,9 +13,9 @@ export default function ProfilePage() {
     const getProfileContent = () => {
         if (userRole === 'FARMER') {
             return {
-                title: "Farmer Profile",
+                title: "Seller Profile",
                 href: `/dashboard/profile/update`,
-                linkTitle: "Update Farmer Profile",
+                linkTitle: "Update Seller Profile",
                 component: <ListFarmerForm userId={userId} userRole="FARMER" />
             };
         }

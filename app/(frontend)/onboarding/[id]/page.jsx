@@ -11,14 +11,10 @@ export default function page({params:{id}}) {
     },
     {
       number: 2,
-      title: "Farm Details",
-    },
-    {
-      number: 3,
       title: "Additional Information",
     },
     {
-      number: 4,
+      number: 3,
       title: " Summary",
     },
   ];

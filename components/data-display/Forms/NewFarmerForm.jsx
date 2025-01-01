@@ -6,16 +6,14 @@ import TextareaInput from "@/components/forms/FormInput/Textareinput";
 import TextInput from "@/components/forms/FormInput/Textinput";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { makePostRequest } from "@/lib/apiRequest";
+import { makePostRequest, makePutRequest } from "@/lib/apiRequest";
 import { generateUserCode } from "@/lib/generateUserCode";
-import ToggleInput from "@/components/forms/FormInput/Toggleinput";
 import { useRouter } from "next/navigation";
 import ArrayItemInput from "@/components/forms/FormInput/ArrayItemInput";
 
-export default function NewFarmerForm({ user }) {
+export default function NewFarmerForm({ updateData = {}, userId }) {
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
-  const [couponCode, setCouponCode] = useState();
+  const [imageUrl, setImageUrl] = useState(updateData?.profileImage || "");
   const [products, setProducts] = useState([]);
   const {
     register,
@@ -26,22 +24,38 @@ export default function NewFarmerForm({ user }) {
   } = useForm({
     defaultValues: {
       isActive: true,
-      ...user
+      ...updateData,
     }
   });
   const router = useRouter();
   function redirect() {
-    router.push("/login");
+    router.push("/dashboard/profile");
   }
   const isActive = watch("isActive")
   async function onSubmit(data) {
     const code = generateUserCode("LFF", data.name);
     data.code = code;
-    data.userId = user.id;
+    data.userId = userId;
     data.products = products
     data.profileImageUrl = imageUrl;
     console.log(data);
-    makePostRequest(setLoading, "api/farmers", data, "Farmer Profile", reset, redirect);
+    if (updateData?.id) {
+      makePutRequest(
+        setLoading,
+        `api/farmers/${userId}/profile`,
+        data,
+        "Profile",
+        redirect
+      );
+    } else {
+      makePostRequest(
+        setLoading,
+        `api/farmers/${userId}/profile`,
+        data,
+        "Profile",
+        redirect
+      );
+    }
   }
 
   return (
@@ -51,14 +65,13 @@ export default function NewFarmerForm({ user }) {
     >
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <TextInput
-          label="Farmer's Full Name"
+          label="Seller's Full Name"
           name="name"
           register={register}
           errors={errors}
-          className="w-full"
         />
         <TextInput
-          label="Farmer's Phone"
+          label="Seller's Phone"
           name="phone"
           type="tel"
           register={register}
@@ -66,84 +79,47 @@ export default function NewFarmerForm({ user }) {
           className="w-full"
         />
         <TextInput
-          label="Farmer's Email address"
+          label="Seller's Email address"
           name="email"
           register={register}
           errors={errors}
           className="w-full"
         />
         <TextInput
-          label="Farmer's Physical Address"
+          label="Seller's Address"
           name="physicalAddress"
           register={register}
           errors={errors}
           className="w-full"
         />
         <TextInput
-          label="Farmer's Contact Person"
+          label="Seller's Contact Person"
           name="contactPerson"
-          register={register}
-          errors={errors}
-          className="w-full"
-        />
-        <TextInput
-          label="Farmer's Contact Person Phone"
-          name="contactPersonPhone"
-          type="tel"
-          register={register}
-          errors={errors}
-          className="w-full"
-        />
-        <TextInput
-          label="What is the Size of Your Land in Accres"
-          name="landSize"
-          type="number"
-          register={register}
-          errors={errors}
-          className="w-full"
-        />
-        <TextInput
-          label="What is your main Crop that you Cultivate"
-          name="mainCrop"
-          type="text"
           register={register}
           errors={errors}
           className="w-full"
         />
         <ArrayItemInput itemTitle="Product" setItems={setProducts} items={products} />
         <ImageInput
-          label="Farmer Profile Image"
+          label="Seller Profile Image"
           setImageUrl={setImageUrl}
           imageUrl={imageUrl}
           endpoint="farmerProfileUploader"
         />
         <TextareaInput
-          label="Farmer's Payment Terms"
+          label="Seller's Payment Terms"
           name="terms"
           register={register}
           errors={errors}
           isRequired={false}
         />
-        <TextareaInput
-          label="Notes"
-          name="notes"
-          register={register}
-          errors={errors}
-          isRequired={false}
-        />
-        <ToggleInput
-          label="Farmer Status "
-          name="isActive"
-          trueTitle="Active"
-          falseTitle="Draft"
-          register={register}
-        />
       </div>
       <SubmitButton
         isLoading={loading}
-        buttonTitle="Create Farmer"
-        loadingButtonTitle="Creating Farmer please wait....."
+        buttonTitle={updateData?.id ? "Update Profile" : "Create Profile"}
+        loadingButtonTitle={`${updateData?.id ? "Updating" : "Creating"} Profile...`}
       />
+
     </form>
   );
 }

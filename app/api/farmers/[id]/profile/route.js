@@ -56,14 +56,9 @@ export async function PUT(request, { params }) {
                 phone: data.phone,
                 physicalAddress: data.physicalAddress,
                 contactPerson: data.contactPerson,
-                contactPersonPhone: data.contactPersonPhone,
                 profileImageUrl: data.profileImageUrl,
-                notes: data.notes,
                 terms: data.terms,
-                products: data.products,
-                landSize: data.landSize,
-                mainCrop: data.mainCrop,
-                isActive: data.isActive
+                products: data.products
             },
         });
         return NextResponse.json(farmerProfile);

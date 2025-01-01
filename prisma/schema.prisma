@@ -177,18 +177,15 @@ model FarmerProfile{
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   code String
   contactPerson String?
-  contactPersonPhone String?
   profileImageUrl String?
   firstName String?
   lastName  String?
-  notes String?
+
   phone String?
   physicalAddress String?
   terms  String?
-  isActive Boolean?
   products String[]
-  landSize  Float?
-  mainCrop String
+
   
   user User @relation(fields: [userId], references: [id],onDelete: Cascade, onUpdate: Cascade)
   userId String @db.ObjectId @unique

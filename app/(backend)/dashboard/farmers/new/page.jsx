@@ -7,8 +7,8 @@ export default function NewFarmer() {
 
   return (
     <div>
-      <FormHeader title="New Farmer" />
-        <NewFarmerForm/>
+      <FormHeader title="New Seller" />
+      <NewFarmerForm />
     </div>
   );
 }

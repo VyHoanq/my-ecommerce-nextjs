@@ -12,9 +12,9 @@ export default async function FarmerProfilePage() {
     return (
         <div>
             <PageHeader
-                title="Farmer Profile"
+                title="Seller Profile"
                 href="/dashboard/profile/update"
-                linkTitle="Update Farmer Profile"
+                linkTitle="Update Seller Profile"
             />
             <ListFarmerForm userId={user.id} />
         </div>
