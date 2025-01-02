@@ -28,11 +28,15 @@ const Chatbot = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!userId || !message.trim()) return;
+
         const dataPost = {
             userId: userId,
-            message: message,
+            message: message.trim()
         };
-        if (userId && message) {
+
+        try {
             const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
             const res = await fetch(`${baseUrl}/api/chat`, {
                 method: "POST",
@@ -41,22 +45,25 @@ const Chatbot = () => {
                 },
                 body: JSON.stringify(dataPost),
             });
+
             const data = await res.json();
+
             if (data.status === 200) {
                 setChathistory(data.data);
-                setMessage(""); // Clear the input field after sending
-            } else {
-                alert("không có chat cũ");
+                setMessage("");
             }
+        } catch (error) {
+            console.error("Chat error:", error);
         }
     };
+
 
     return (
         <>
             <div
                 className="chatbot-icon-modal"
-                onClick={() => setOpenChat(!openChat)}
-            ></div>
+                onClick={() => setOpenChat(!openChat)}>
+            </div>
             <div className={`box-message-ai ${openChat ? "" : "show"} `}>
                 <div className="box-message-ai__top">
                     <div

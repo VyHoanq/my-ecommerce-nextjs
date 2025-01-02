@@ -40,7 +40,7 @@ export default function ProductImageCarousel({ productImages = [
                 ) : (
                     <>
                         <Swiper
-                            style={{ '--swiper-navigation-color': '#fff', '--swiper-pagination-color': '#fff' }}
+                            style={{ '--swiper-navigation-color': '#000', '--swiper-pagination-color': '#000' }}
                             spaceBetween={10}
                             navigation={true}
                             thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : undefined}
