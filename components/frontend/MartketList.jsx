@@ -8,7 +8,7 @@ export default async function MartketList() {
   return (
     <div className="dark:text-white text-black py-10">
       {/* Market Slider */}
-      <div className="bg-purple-100 rounded-lg p-4 mt-5">
+      <div className="bg-purple-100 dark:bg-white dark:text-black rounded-lg p-4 mt-5">
         <h2 className="py-2 text-center text-2xl font-bold mb-4">BRAND</h2>
         <MarketCarousel markets={markets} />
       </div>

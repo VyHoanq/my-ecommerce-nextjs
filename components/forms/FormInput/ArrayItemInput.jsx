@@ -24,7 +24,7 @@ export default function ArrayItemInput({ setItems, items=[], itemTitle }) {
               onChange={(e) => setItem(e.target.value)}
               type="text"
               id="voice-search"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full ps-10 p-2.5  dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full ps-10 p-2.5  dark:bg-white dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
               placeholder={`Create a ${itemTitle}...`}
               required
             />
@@ -61,7 +61,7 @@ export default function ArrayItemInput({ setItems, items=[], itemTitle }) {
             <div
               onClick={() => removeItem(i)}
               key={i}
-              className="bg-slate-200 flex space-x-2 items-center dark:bg-slate-600 px-4 py-2 rounded-lg cursor-pointer dark:text-slate-300 text-slate-800"
+              className="bg-slate-200 flex space-x-2 items-center dark:bg-white px-4 py-2 rounded-lg cursor-pointer dark:text-slate-300 text-slate-800"
             >
               <p>{item}</p>
               <X className="w-4 h-4" />

@@ -107,7 +107,7 @@ export default async function ProductDetailPage({ params: { slug } }) {
           </div>
         </div>
       </div>
-      <div className="bg-white dark:bg-slate-700 px-4 my-8 rounded p-4">
+      <div className="bg-white dark:bg-white px-4 my-8 rounded p-4">
         <h2 className="mb-4 text-xl font-semibold text-slate-400 ml-3">
           Similar Products
         </h2>

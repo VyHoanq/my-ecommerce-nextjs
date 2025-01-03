@@ -2,7 +2,7 @@ import React from 'react'
 import { Search, Trash2 , Download } from 'lucide-react'
 export default function TableActions() {
   return (
-    <div className="flex justify-between py-6 px-12  bg-white dark:bg-slate-700 rounded-lg items-center gap-8  ">
+    <div className="flex justify-between py-6 px-12  bg-white dark:bg-white rounded-lg items-center gap-8  ">
     <button className='flex items-center justify-center text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-4 py-2 space-x-2'> 
        <Download/>
        <span>Export</span>

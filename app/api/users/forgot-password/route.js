@@ -4,8 +4,19 @@ import db from "@/lib/db";
 import { v4 as uuidv4 } from "uuid";
 import base64url from "base64url";
 import { Resend } from "resend";
-import { EmailTemplate } from "@/components/email-template";
+import createEmailTemplate from "@/components/email-template";
+import nodemailer from 'nodemailer';
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD
+  }
+});
 export async function PUT(request) {
+
+
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     //extract the data
@@ -31,30 +42,31 @@ export async function PUT(request) {
     console.log(rawToken);
     // Encode the token using Base64 URL-safe format
     const token = base64url.encode(rawToken);
-   
+
     //Send an Email with the Token on the link as a search param
-    const linkText = "Reset Password";
     const userId = existingUser.id;
     const name = existingUser.name;
+    const linkText = "Reset Password";
     const redirectUrl = `reset-password?token=${token}&id=${userId}`;
-    const description =
-      "Click on the following link in order to reset your password. Thank you";
+    const description = "Click on the following link in order to reset your password. Thank you";
     const subject = "Password Reset - Zunz Ecommerce";
-    console.log(userId, name, redirectUrl);
-    const sendMail = await resend.emails.send({
-      from: "Acme <onboarding@resend.dev>",
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
       to: email,
-      subject: subject,
-      react: EmailTemplate({
+      subject,
+      react: createEmailTemplate({
         name,
         redirectUrl,
         linkText,
         description,
         subject,
       }),
-    });
-    console.log(sendMail);
+    };
+    console.log(mailOptions);
     //Upon Click redirect them to the login
+
+    await transporter.sendMail(mailOptions);
 
     console.log(token);
     return NextResponse.json(

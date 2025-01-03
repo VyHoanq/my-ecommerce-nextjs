@@ -60,7 +60,7 @@ export default function MarketCarousel({ markets }) {
                 quality={90} // Tăng chất lượng hình ảnh
               />
             </div>
-            <h2 className="dark:text-slate-200 text-slate-800 mt-2 text-center">
+            <h2 className="dark:text-black font-bold text-slate-800 mt-2 text-center">
               {markets.title}
             </h2>
           </Link>

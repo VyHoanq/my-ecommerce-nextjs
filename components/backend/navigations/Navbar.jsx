@@ -31,7 +31,7 @@ if (status==="loading"){
 }
 
   return (
-    <div className="flex items-center justify-between bg-slate-50 dark:bg-neutral-900 text-slate-50 h-20 px-8 py-8 fixed top-0 w-full z-50 sm:pr-[20rem]">
+    <div className="flex items-center justify-between bg-slate-50 dark:bg-white dark:text-black-900 text-slate-50 h-20 px-8 py-8 fixed top-0 w-full z-50 sm:pr-[20rem]">
       {/* Icon */}
       <button
         onClick={() => setShowSidebar(!showSidebar)}

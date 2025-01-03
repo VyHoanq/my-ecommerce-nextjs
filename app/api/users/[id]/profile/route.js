@@ -72,6 +72,15 @@ export async function PUT(request, { params }) {
     try {
         const data = await request.json();
 
+        // Get current user profile
+        const currentProfile = await db.userProfile.findUnique({
+            where: { userId: id }
+        });
+
+        // If no new image is provided, keep the existing one
+        const profileImage = data.profileImage || currentProfile.profileImage;
+
+
         // Convert dateOfBirth string to DateTime format
         if (data.dateOfBirth) {
             data.dateOfBirth = new Date(data.dateOfBirth).toISOString();
@@ -90,7 +99,7 @@ export async function PUT(request, { params }) {
                 city: data.city,
                 country: data.country,
                 district: data.district,
-                profileImage: data.profileImage
+                profileImage: profileImage
             },
         });
         return NextResponse.json(profile);

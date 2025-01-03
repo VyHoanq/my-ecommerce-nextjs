@@ -46,7 +46,7 @@ export default function TrainingCarousel({ trainings }) {
         return (
           <div
             key={i}
-            className="rounded-lg mr-3 bg-slate-100 dark:bg-slate-900 overflow-hidden"
+            className="rounded-lg mr-3 bg-slate-100 dark:bg-white overflow-hidden"
           >
             <Link href="#">
               <Image

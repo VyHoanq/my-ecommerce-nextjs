@@ -6,16 +6,16 @@ import NewFarmerForm from '@/components/data-display/Forms/NewFarmerForm'
 import db from '@/lib/db'
 import FormHeader from '@/components/forms/FormHeader'
 
-export default async function ProfilePage() {
+export default async function ProfileUpdatePage({ params }) {
     const session = await getServerSession(authOptions)
-    if (!session) return
+    if (!session) return null
 
     const { user } = session
+    const { id } = params
 
     if (user.role === 'FARMER') {
-        // Fetch complete farmer data including user info
         const farmerData = await db.user.findUnique({
-            where: { id: user.id },
+            where: { id },
             include: {
                 farmerProfile: true
             }
@@ -24,23 +24,27 @@ export default async function ProfilePage() {
         return (
             <div className='container mx-auto px-4'>
                 <FormHeader title="Update Seller Profile" />
-                <NewFarmerForm updateData={farmerData} userId={user.id} />
+                <NewFarmerForm updateData={farmerData} userId={id} />
             </div>
         )
     }
 
-    // Fetch complete user data including profile
+    // For regular users
     const userData = await db.user.findUnique({
-        where: { id: user.id },
+        where: { id },
         include: {
-            profile: true
+            profile: true  // Changed from userProfile to profile
         }
     })
+
+    if (!userData) {
+        return <div>User not found</div>
+    }
 
     return (
         <div className='container mx-auto px-4'>
             <FormHeader title="Update Profile" />
-            <NewUserForm updateData={userData} userId={user.id} />
+            <NewUserForm updateData={userData} userId={id} />
         </div>
     )
 }

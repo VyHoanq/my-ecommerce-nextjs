@@ -23,7 +23,7 @@ export default function ProfilePage() {
         if (userRole === 'USER') {
             return {
                 title: "User Profile",
-                href: `/dashboard/profile/update/${userId}`,
+                href: `/dashboard/profile/update`,
                 linkTitle: "Update User Profile",
                 component: <ListProfileForm userId={userId} userRole="USER" />
             };

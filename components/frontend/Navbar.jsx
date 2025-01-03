@@ -19,7 +19,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="bg-white dark:bg-slate-700">
+    <div className="bg-white dark:bg-white">
       <div className="flex items-center justify-between py-3 max-w-7xl mx-auto px-4 sm:px-8 sm:gap-2 gap-8">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">

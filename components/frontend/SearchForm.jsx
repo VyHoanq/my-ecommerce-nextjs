@@ -27,7 +27,7 @@ export default function SearchForm() {
                     {...register("searchTerm")}
                     type="text"
                     id="voice-search"
-                    className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-neutral-500 focus:border-neutral-500 block w-full ps-10 p-2.5  dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-neutral-500 dark:focus:border-neutral-500" placeholder="Search Products, Categories, Markets ...." required
+                    className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-neutral-500 focus:border-neutral-500 block w-full ps-10 p-2.5  dark:bg-white dark:text-black-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-neutral-500 dark:focus:border-neutral-500" placeholder="Search Products, Categories, Markets ...." required
                 />
             </div>
             <button

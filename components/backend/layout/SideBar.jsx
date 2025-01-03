@@ -231,7 +231,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
               </div>
             </CollapsibleTrigger>
 
-            <CollapsibleContent className="px-3 pl-6 bg-slate-100 dark:bg-neutral-900 text-sm rounded-lg py-3  ">
+            <CollapsibleContent className="px-3 pl-6 bg-slate-100 dark:bg-white dark:text-black-900 text-sm rounded-lg py-3  ">
               {catalogueLinks.map((item, i) => {
                 const Icon = item.icon;
                 return (

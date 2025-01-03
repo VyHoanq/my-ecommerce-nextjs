@@ -16,7 +16,7 @@ export default async function page({ params: { id } }) {
       <section className="py-5 dark:bg-slate-950 bg-slate-50 sm:py-16 lg:py-10">
         <div className="px-4 mx-auto sm:px-6 lg:px-5 max-w-5xl">
           <div className="max-w-2xl mx-auto">
-            <div className="relative mt-6 overflow-hidden bg-white dark:bg-slate-700 rounded-lg shadow md:mt-10">
+            <div className="relative mt-6 overflow-hidden bg-white dark:bg-white rounded-lg shadow md:mt-10">
               <div className="absolute top-4 right-4">
                 <button
                   type="button"

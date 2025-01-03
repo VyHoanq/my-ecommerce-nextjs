@@ -9,7 +9,7 @@ export default async function SidebarCategories() {
   const categories = categoriesData.filter((category)=>category.products.length >0)
   console.log(categories)
   return (
-    <div className="sm:col-span-3 sm:block bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 text-slate-800 overflow-hidden hidden ">
+    <div className="sm:col-span-3 sm:block bg-white border border-gray-300 rounded-lg dark:bg-white  dark:border-gray-700 text-black overflow-hidden hidden ">
       <h2 className="bg-slate-100 py-3 px-6 font-semibold border-b boder-gary-300 ">
         Shop by Category ({categories.length})
       </h2>
@@ -29,7 +29,7 @@ export default async function SidebarCategories() {
                 alt={category.title}
                 priority={true}
               />
-              <span className="text-sm">{category.title}</span>
+              <span className="text-sm dark:text-black">{category.title}</span>
             </Link>
           );
         })}

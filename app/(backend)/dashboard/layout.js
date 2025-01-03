@@ -12,7 +12,7 @@ export default function Layout({ children }) {
       <div className="  lg:ml-60 md:ml-10 ml-0 flex-grow bg-white min-h-screen w-full overflow-y-scroll">
         {/* Header */}
         <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
-        <main className="bg-slate-100 p-8 dark:bg-neutral-800 text-slate-50 min-h-screen mt-16">
+        <main className="bg-slate-100 p-8 dark:bg-white dark:text-black text-slate-50 min-h-screen mt-16">
           {children}
         </main>
         {/* Main */}
